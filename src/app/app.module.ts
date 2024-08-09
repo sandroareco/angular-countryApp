@@ -6,6 +6,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideHttpClient } from '@angular/common/http';
 
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+
 @NgModule({
     declarations: [
         AppComponent
@@ -17,7 +19,11 @@ import { provideHttpClient } from '@angular/common/http';
     ],
     exports: [],
     providers: [
-        provideHttpClient()
+        provideHttpClient(),
+        { 
+            provide: LocationStrategy, 
+            useClass: HashLocationStrategy 
+        }
     ],
     bootstrap: [AppComponent],
 })
